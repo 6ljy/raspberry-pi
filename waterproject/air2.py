@@ -1,0 +1,23 @@
+import Adafruit_DHT
+import RPi.GPIO
+import time
+
+# Set sensor type : Options are DHT11,DHT22 or AM2302
+sensor = Adafruit_DHT.DHT11
+
+# Set GPIO sensor is connected to
+gpio = 18
+
+while True:
+    print("go in")
+    time.sleep(1)
+    
+    humidity, temperature = Adafruit_DHT.read_retry(sensor, gpio)
+    print("start project!")
+    
+    if humidity is not None and temperature is not None:
+        a = 'Temp={0:0.1f}*C Humidity={1:0.1f}%'.format(temperature, humidity)
+        print(type(a))
+        print('Temp={0:0.1f}*C Humidity={1:0.1f}%'.format(temperature, humidity))
+    else:
+        print('Failed to get reading. Try again!')
